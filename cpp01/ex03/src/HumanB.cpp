@@ -1,27 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Weapon.hpp                                         :+:      :+:    :+:   */
+/*   HumanB.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: glaguyon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/16 20:00:49 by glaguyon          #+#    #+#             */
-/*   Updated: 2024/10/17 15:32:05 by glaguyon         ###   ########.fr       */
+/*   Created: 2024/10/17 15:26:27 by glaguyon          #+#    #+#             */
+/*   Updated: 2024/10/17 15:50:02 by glaguyon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef WEAPON_HPP
-# define WEAPON_HPP
-
+#include <iostream>
 #include <string>
+#include "HumanB.hpp"
 
-class	Weapon
+HumanB::HumanB(std::string name)
 {
-	std::string	_type;
-	public:
-	const std::string	&getType() const;
-	void			setType(std::string type);
-	Weapon(std::string type);
-};
+	_name = name;
+	_weapon = NULL;
+}
 
-#endif
+void	HumanB::attack()
+{
+	if (_weapon)
+		std::cout << _name << " attacks with their " << _weapon->getType() << '\n';
+	else
+		std::cout << _name << " attacks with their bare hands :(\n";
+}
+
+void	HumanB::setWeapon(Weapon &weapon)
+{
+	_weapon = &weapon;
+}
