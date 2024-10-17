@@ -6,7 +6,7 @@
 /*   By: glaguyon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 18:37:47 by glaguyon          #+#    #+#             */
-/*   Updated: 2024/10/16 19:14:06 by glaguyon         ###   ########.fr       */
+/*   Updated: 2024/10/16 20:02:23 by glaguyon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 class	Zombie
 {
 	std::string	_name;
-	public :
+	public:
 	void	announce();
 	Zombie(std::string name);
 };

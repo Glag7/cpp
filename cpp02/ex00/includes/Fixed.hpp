@@ -1,32 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Zombie.hpp                                         :+:      :+:    :+:   */
+/*   Fixed.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: glaguyon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/16 18:37:47 by glaguyon          #+#    #+#             */
-/*   Updated: 2024/10/16 20:02:14 by glaguyon         ###   ########.fr       */
+/*   Created: 2024/10/17 19:42:11 by glaguyon          #+#    #+#             */
+/*   Updated: 2024/10/17 19:51:55 by glaguyon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ZOMBIE_HPP
-# define ZOMBIE_HPP
+#ifndef FIXED_HPP
+# define FIXED_HPP
 
-# include <string>
-
-class	Zombie
+class Fixed
 {
-	std::string	_name;
-	public:
-	void	announce();
-	void	setName(std::string name);
-	Zombie(std::string name);
-	Zombie();
+	int			_value;
+	static const int	_fixed = 8;
 };
-
-Zombie	*newZombie(std::string name);
-void	randomChump(std::string name);
-Zombie	*zombieHorde(int n, std::string name);
 
 #endif

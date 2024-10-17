@@ -5,7 +5,7 @@ OBJ_DIR = obj/
 HDR_DIR = includes/
 
 COMP = c++
-CPPFLAGS = -g -Wall -Wextra -Werror -std=c++98
+CPPFLAGS = -Wall -Wextra -Werror -std=c++98
 
 SRC = main.cpp \
       Contact.cpp \
