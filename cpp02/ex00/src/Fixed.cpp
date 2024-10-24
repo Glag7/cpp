@@ -1,29 +1,49 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Fixed.hpp                                          :+:      :+:    :+:   */
+/*   Fixed.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: glaguyon           <skibidi@ohio.sus>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 1833/02/30 06:67:85 by glaguyon          #+#    #+#             */
-/*   Updated: 2024/10/24 17:14:43 by glaguyon         ###   ########.fr       */
+/*   Updated: 2024/10/24 17:26:45 by glaguyon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FIXED_HPP
-# define FIXED_HPP
+#include <iostream>
+#include "Fixed.hpp"
 
-class Fixed
+Fixed::Fixed()
 {
-	int			_value;
-	static const int	_fixed = 8;
-	public:
-	Fixed();
-	Fixed(Fixed const &f);
-	Fixed &operator=(Fixed const &f);
-	~Fixed();
-	int	getRawBits() const;
-	void	setRawBits(int const raw);
-};
+	_value = 0;
+	std::cout << "hello this is fixed\n";
+}
 
-#endif // FIXED_HPP
+Fixed::Fixed(Fixed const &f)
+{
+	std::cout << "hello this is fixed from fixed\n";
+	*this = f;
+}
+
+Fixed &Fixed::operator=(Fixed const &f)
+{
+	std::cout << "hello this is fixed = fixed\n";
+	_value = f.getRawBits();
+	return *this;
+}
+
+Fixed::~Fixed()
+{
+	std::cout << "bye this was fixed\n";
+}
+
+int	Fixed::getRawBits() const
+{
+	std::cout << "the bits are raw\n";
+	return _value;
+}
+
+void	Fixed::setRawBits(int const raw)
+{
+	_value = raw;
+}
