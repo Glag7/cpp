@@ -6,7 +6,7 @@
 /*   By: glaguyon           <skibidi@ohio.sus>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 1833/02/30 06:67:85 by glaguyon          #+#    #+#             */
-/*   Updated: 2024/10/24 19:05:02 by glaguyon         ###   ########.fr       */
+/*   Updated: 2024/10/29 17:24:56 by glaguyon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,22 +93,90 @@ bool		Fixed::operator<(Fixed const &f) const
 
 Fixed		Fixed::operator+(Fixed const &f) const
 {
-	return Fixed(this->toFloat() + f.toFloat());
+	Fixed	res;
+
+	res.setRawBits(_value + f._value);
+	return res;
 }
 
 Fixed		Fixed::operator-(Fixed const &f) const
 {
-	return Fixed(this->toFloat() - f.toFloat());
+	Fixed	res;
+
+	res.setRawBits(_value - f._value);
+	return res;
 }
 
 Fixed		Fixed::operator*(Fixed const &f) const
 {
-	return Fixed(this->toFloat() * f.toFloat());
+	Fixed	res;
+
+	res.setRawBits(((long long)_value * (long long)f._value) >> _fixed);
+	return res;
 }
 
 Fixed		Fixed::operator/(Fixed const &f) const
 {
-	return Fixed(this->toFloat() / f.toFloat());
+	Fixed	res;
+
+	res.setRawBits(((long long)_value << _fixed) / (long long)f._value);
+	return res;
+}
+
+Fixed		Fixed::operator++()
+{
+	++_value;
+	return *this;
+}
+
+Fixed		Fixed::operator++(int)
+{
+	Fixed	tmp = *this;
+
+	++_value;
+	return tmp;
+}
+
+Fixed		Fixed::operator--()
+{
+	--_value;
+	return *this;
+}
+
+Fixed		Fixed::operator--(int)
+{
+	Fixed	tmp = *this;
+
+	--_value;
+	return tmp;
+}
+
+Fixed	&Fixed::min(Fixed &f1, Fixed &f2)
+{
+	if (f1 < f2)
+		return f1;
+	return f2;
+}
+
+const Fixed	&Fixed::min(const Fixed &f1, const Fixed &f2)
+{
+	if (f1 < f2)
+		return f1;
+	return f2;
+}
+
+Fixed	&Fixed::max(Fixed &f1, Fixed &f2)
+{
+	if (f1 > f2)
+		return f1;
+	return f2;
+}
+
+const Fixed	&Fixed::max(const Fixed &f1, const Fixed &f2)
+{
+	if (f1 > f2)
+		return f1;
+	return f2;
 }
 
 int	Fixed::getRawBits() const
