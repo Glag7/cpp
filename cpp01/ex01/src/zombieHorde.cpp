@@ -6,7 +6,7 @@
 /*   By: glaguyon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 19:29:59 by glaguyon          #+#    #+#             */
-/*   Updated: 2024/10/16 19:43:23 by glaguyon         ###   ########.fr       */
+/*   Updated: 2024/10/18 18:23:13 by glaguyon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,9 @@
 
 Zombie	*zombieHorde(int n, std::string name)
 {
+	if (n < 0)
+		return (0);
+
 	Zombie	*horde = new Zombie[n];
 
 	for (int i = 0; i < n; ++i)
