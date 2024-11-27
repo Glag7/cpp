@@ -6,7 +6,7 @@
 /*   By: glaguyon           <skibidi@ohio.sus>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 1833/02/30 06:67:85 by glaguyon          #+#    #+#             */
-/*   Updated: 2024/10/24 18:24:29 by glaguyon         ###   ########.fr       */
+/*   Updated: 2024/10/24 18:34:05 by glaguyon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ Fixed::Fixed(const int value)
 
 Fixed::Fixed(const float value)
 {
+	std::cout << "hello this is fixed but float\n";
 	_value = (int)roundf(value * (float)(1 << _fixed));
 }
 
