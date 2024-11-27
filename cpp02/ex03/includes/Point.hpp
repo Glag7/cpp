@@ -6,7 +6,7 @@
 /*   By: glaguyon           <skibidi@ohio.sus>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 1833/02/30 06:67:85 by glaguyon          #+#    #+#             */
-/*   Updated: 2024/10/29 19:13:59 by glaguyon         ###   ########.fr       */
+/*   Updated: 2024/11/27 20:11:22 by glaguyon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ class Point
 	~Point();
 	Fixed		getX() const;
 	Fixed		getY() const;
-	Fixed		dist(const Point &p) const;
+	Fixed		getSide(const Point &a, const Point &b) const;
 };
 
 #endif // POINT_HPP

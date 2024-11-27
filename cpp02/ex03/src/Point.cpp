@@ -6,7 +6,7 @@
 /*   By: glaguyon           <skibidi@ohio.sus>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 1833/02/30 06:67:85 by glaguyon          #+#    #+#             */
-/*   Updated: 2024/10/29 19:17:34 by glaguyon         ###   ########.fr       */
+/*   Updated: 2024/11/27 20:37:16 by glaguyon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ Fixed	Point::getY() const
 	return _y;
 }
 
-Fixed	Point::dist(const Point &p) const
+Fixed	Point::getSide(const Point &a, const Point &b) const
 {
-	return Fixed(sqrt(((p._x - _x) * (p._x - _x) + (p._y - _y) * (p._y - _y)).toFloat()));
+	return ((_y - a._y) * (b._x - a._x) - (_x - a._x) * (b._y - a._y));
 }
