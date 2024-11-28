@@ -6,7 +6,7 @@
 /*   By: glaguyon           <skibidi@ohio.sus>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 1833/02/30 06:67:85 by glaguyon          #+#    #+#             */
-/*   Updated: 2024/11/28 18:48:11 by glaguyon         ###   ########.fr       */
+/*   Updated: 2024/11/28 19:02:35 by glaguyon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ class ScavTrap : public ClapTrap
 	ScavTrap(const ScavTrap &s);
 	ScavTrap &operator=(const ScavTrap &s);
 	~ScavTrap();
+	void	guardGuate();
+	void	attack(const std::string& target);
 	void	printInfo(std::ostream &out);
 };
 

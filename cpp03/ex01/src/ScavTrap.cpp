@@ -6,7 +6,7 @@
 /*   By: glaguyon           <skibidi@ohio.sus>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 1833/02/30 06:67:85 by glaguyon          #+#    #+#             */
-/*   Updated: 2024/11/28 18:49:08 by glaguyon         ###   ########.fr       */
+/*   Updated: 2024/11/28 19:08:56 by glaguyon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,24 @@ void	ScavTrap::printInfo(std::ostream &out)
 {
 	out << "ScavTrap " << _name
 		<< "; hp: " << _hp << ", ep: " << _ep << ", atk: " << _atk << "\n";
+}
+
+void	ScavTrap::attack(const std::string& target)
+{
+	if (_ep <= 0 || _hp <= 0)
+	{
+		std::cout << "ScavTrap " << _name << " is exhausted\n";
+		return ;
+	}
+	std::cout << "ScavTrap " << _name << " attacks " << target
+		<< ", causing " << _atk << " points of damage\n";
+	--_ep;
+}
+
+void	ScavTrap::guardGuate()
+{
+	std::cout << "ScavTrap " << _name
+		<< " is now in Gate keeper mode. This does not do anything.\n";
 }
 
 std::ostream	&operator<<(std::ostream &out, ScavTrap &s)

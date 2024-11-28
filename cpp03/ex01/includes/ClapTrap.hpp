@@ -6,7 +6,7 @@
 /*   By: glaguyon           <skibidi@ohio.sus>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 1833/02/30 06:67:85 by glaguyon          #+#    #+#             */
-/*   Updated: 2024/11/28 18:47:30 by glaguyon         ###   ########.fr       */
+/*   Updated: 2024/11/28 19:02:01 by glaguyon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ class ClapTrap
 	ClapTrap(const ClapTrap &c);
 	ClapTrap &operator=(const ClapTrap &c);
 	~ClapTrap();
-	void	attack(const std::string& target);
+	virtual void	attack(const std::string& target);
 	void	takeDamage(unsigned int amount);
 	void	beRepaired(unsigned int amount);
 	virtual void	printInfo(std::ostream &out);
