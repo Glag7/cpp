@@ -23,11 +23,11 @@ Point::Point(const float x, const float y) : _x(x), _y(y)
 {
 }
 
-Point::Point(Point const &p) : _x(p._x), _y(p._y)
+Point::Point(const Point &p) : _x(p._x), _y(p._y)
 {
 }
 
-Point &Point::operator=(Point const &p){
+Point &Point::operator=(const Point &p){
 	const_cast<Fixed &>(_x) = p._x;
 	const_cast<Fixed &>(_y) = p._y;
 	return *this;

@@ -19,8 +19,8 @@ class Fixed
 	static const int	_fixed = 8;
 	public:
 	Fixed();
-	Fixed(Fixed const &f);
-	Fixed &operator=(Fixed const &f);
+	Fixed(const Fixed &f);
+	Fixed &operator=(const Fixed &f);
 	~Fixed();
 	int	getRawBits() const;
 	void	setRawBits(int const raw);

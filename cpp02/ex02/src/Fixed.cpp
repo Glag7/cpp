@@ -43,13 +43,13 @@ float	Fixed::toFloat() const
 	return (float)(_value) / (float)(1 << _fixed);
 }
 
-Fixed::Fixed(Fixed const &f)
+Fixed::Fixed(const Fixed &f)
 {
 	//std::cout << "hello this is fixed from fixed\n";
 	*this = f;
 }
 
-Fixed &Fixed::operator=(Fixed const &f)
+Fixed &Fixed::operator=(const Fixed &f)
 {
 	//std::cout << "hello this is fixed = fixed\n";
 	_value = f.getRawBits();

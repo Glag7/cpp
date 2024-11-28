@@ -23,10 +23,10 @@ class Fixed
 	Fixed();
 	Fixed(const int value);
 	Fixed(const float value);
-	Fixed(Fixed const &f);
+	Fixed(const Fixed &f);
 	int	toInt() const;
 	float	toFloat() const;
-	Fixed		&operator=(Fixed const &f);
+	Fixed		&operator=(const Fixed &f);
 	bool		operator==(Fixed const &f) const;
 	bool		operator>=(Fixed const &f) const;
 	bool		operator<=(Fixed const &f) const;
