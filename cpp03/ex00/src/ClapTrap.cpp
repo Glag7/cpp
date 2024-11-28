@@ -33,13 +33,13 @@ ClapTrap::ClapTrap()
 	std::cout << "hello i clap\n";
 }
 
-ClapTrap::ClapTrap(ClapTrap const &c)
+ClapTrap::ClapTrap(const ClapTrap &c)
 {
 	*this = c;
 	std::cout << "clap from " << _name << "\n";
 }
 
-ClapTrap &ClapTrap::operator=(ClapTrap const &c)
+ClapTrap &ClapTrap::operator=(const ClapTrap &c)
 {
 	std::cout << "clap = trap\n";
 	_name = c._name;
