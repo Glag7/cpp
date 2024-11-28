@@ -6,31 +6,105 @@
 /*   By: glaguyon           <skibidi@ohio.sus>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 1833/02/30 06:67:85 by glaguyon          #+#    #+#             */
-/*   Updated: 1833/02/30 06:67:85 by glaguyon         ###   ########.fr       */
+/*   Updated: 2024/11/28 16:50:32 by glaguyon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
+#include <sstream>
+#include <string>
 #include "ClapTrap.hpp"
+
+ClapTrap::ClapTrap(std::string name)
+{
+	_name = name;
+	_hp = 10;
+	_ep = 10;
+	_atk = 0;
+	std::cout << "hello i clap my name is " << name << "\n";
+}
 
 ClapTrap::ClapTrap()
 {
-	std::cout << "hello\n";
+	_name = "ClapTrap";
+	_hp = 10;
+	_ep = 10;
+	_atk = 0;
+	std::cout << "hello i clap\n";
 }
 
 ClapTrap::ClapTrap(ClapTrap const &c)
 {
 	*this = c;
-	std::cout << "hello hello\n";
+	std::cout << "clap from " << _name << "\n";
 }
 
 ClapTrap &ClapTrap::operator=(ClapTrap const &c)
 {
-	std::cout << "hello = hello\n";
+	std::cout << "clap = trap\n";
+	_name = c._name;
+	_hp = c._hp;
+	_ep = c._ep;
+	_atk = c._atk;
 	return *this;
 }
 
 ClapTrap::~ClapTrap()
 {
-	std::cout << "bye bye\n";
+	std::cout << "bye bye this was " << _name << "\n";
+}
+
+void	ClapTrap::attack(const std::string& target)
+{
+	if (_ep <= 0 || _hp <= 0)
+	{
+		std::cout << "ClapTrap " << _name << " is exhausted\n";
+		return ;
+	}
+	std::cout << "ClapTrap " << _name << " attacks " << target
+		<< ", causing " << _atk << " points of damage\n";
+	--_ep;
+}
+
+void	ClapTrap::takeDamage(unsigned int amount)
+{
+	if (_hp <= 0)
+	{
+		std::cout << "ClapTrap " << _name << " is dead and cannot take damage\n";
+		return ;
+	}
+	if (amount >= _hp)
+	{
+		std::cout << "ClapTrap " << _name << " takes " << amount << " damage and dies\n";
+		_hp = 0;
+		return ;
+	}
+	_hp -= amount;
+	std::cout << "ClapTrap " << _name << " takes " << amount << " damage and has "
+		<< _hp << " hp left\n";
+}
+
+void	ClapTrap::beRepaired(unsigned int amount)
+{
+	if (_ep <= 0 || _hp <= 0)
+	{
+		std::cout << "ClapTrap " << _name << " is exhausted\n";
+		return ;
+	}
+	--_ep;
+	_hp += amount;
+	std::cout << "ClapTrap " << _name << " repairs itself and regains "
+		<< amount << " hp, now has " << _hp << "\n";
+}
+
+void	ClapTrap::printInfo(std::ostream &out)
+{
+	out << "ClapTrap " << _name
+		<< "; hp: " << _hp << ", ep: " << _ep << ", atk: " << _atk << "\n";
+}
+
+std::ostream	&operator<<(std::ostream &out, ClapTrap &c)
+{
+	c.printInfo(out);
+	return out;
 }
