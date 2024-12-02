@@ -6,7 +6,7 @@
 /*   By: glaguyon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 15:50:17 by glaguyon          #+#    #+#             */
-/*   Updated: 2024/12/02 18:15:36 by glaguyon         ###   ########.fr       */
+/*   Updated: 2024/12/02 18:49:52 by glaguyon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,32 +15,31 @@
 #include "ClapTrap.hpp"
 #include "FragTrap.hpp"
 
-//XXX IL FAUT REFAIRE FIXED AVE LES BON CONST
 int	main()
 {
-	FragTrap	joe("Joe");
+	FragTrap	pedro("Pedro");
 	FragTrap	frag;
-	FragTrap	joe2(joe);
-	FragTrap	joe3;
+	FragTrap	pedro2(pedro);
+	FragTrap	pedro3;
 
-	joe3 = joe;
-	std::cout << joe;
-	std::cout << joe2;
-	std::cout << joe3;
+	pedro3 = pedro;
+	std::cout << pedro;
+	std::cout << pedro2;
+	std::cout << pedro3;
 	std::cout << frag;
-	joe.highFivesGuys();
-	joe.attack("john fragtrap");
-	std::cout << joe;
-	joe.takeDamage(1);
-	std::cout << joe;
-	joe.beRepaired(123456);
-	std::cout << joe;
-	joe.takeDamage(999999);
-	std::cout << joe;
-	joe.takeDamage(9);
-	std::cout << joe;
-	joe.attack("john fragtrap");
-	std::cout << joe;
+	pedro.highFivesGuys();
+	pedro.attack("john fragtrap");
+	std::cout << pedro;
+	pedro.takeDamage(1);
+	std::cout << pedro;
+	pedro.beRepaired(123456);
+	std::cout << pedro;
+	pedro.takeDamage(999999);
+	std::cout << pedro;
+	pedro.takeDamage(9);
+	std::cout << pedro;
+	pedro.attack("john fragtrap");
+	std::cout << pedro;
 	std::cout << frag;
 	for (int i = 0; i < 100; ++i)
 		frag.attack("john fragtrap");

@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SCAVTRAP_HPP
-# define SCAVTRAP_HPP
+#ifndef FRAGTRAP_HPP
+# define FRAGTRAP_HPP
 
 #include <string>
 #include <sstream>
@@ -31,4 +31,4 @@ class FragTrap : public ClapTrap
 
 std::ostream	&operator<<(std::ostream &out, FragTrap &s);
 
-#endif // SCAVTRAP_HPP
+#endif // FRAGTRAP_HPP

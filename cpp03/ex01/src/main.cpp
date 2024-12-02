@@ -6,7 +6,7 @@
 /*   By: glaguyon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 15:50:17 by glaguyon          #+#    #+#             */
-/*   Updated: 2024/11/28 19:08:14 by glaguyon         ###   ########.fr       */
+/*   Updated: 2024/12/02 18:50:09 by glaguyon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 #include "ClapTrap.hpp"
 #include "ScavTrap.hpp"
 
-//XXX IL FAUT REFAIRE FIXED AVE LES BON CONST
 int	main()
 {
 	ScavTrap	joe("Joe");
