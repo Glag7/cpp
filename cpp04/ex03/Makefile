@@ -8,6 +8,9 @@ COMP = c++
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98
 
 SRC = AMateria.cpp \
+      Cure.cpp \
+      Ice.cpp \
+      Character.cpp \
       main.cpp
 
 OBJ = $(SRC:.cpp=.o)
