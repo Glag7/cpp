@@ -6,7 +6,7 @@
 /*   By: glaguyon           <skibidi@ohio.sus>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 1833/02/30 06:67:85 by glaguyon          #+#    #+#             */
-/*   Updated: 2024/12/04 22:56:12 by glaguyon         ###   ########.fr       */
+/*   Updated: 2024/12/05 18:54:14 by glaguyon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,19 +25,19 @@ Cure::Cure(const Cure &c) : AMateria(c)
 
 Cure &Cure::operator=(const Cure &c)
 {
-	Amateria::operator=(c);
+	AMateria::operator=(c);
 	std::cout << "brainless cure =\n";
 	return *this;
 }
 
 void	Cure::use(ICharacter& target)
 {
-	std::cout << "* heals " << target.getName() < "'s wounds *\n";
+	std::cout << "* heals " << target.getName() << "'s wounds *\n";
 }
 
 AMateria*	Cure::clone() const
 {
-	return new AMateria(*this);
+	return new Cure(*this);
 }
 
 Cure::~Cure()

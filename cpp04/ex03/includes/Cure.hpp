@@ -6,14 +6,14 @@
 /*   By: glaguyon           <skibidi@ohio.sus>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 1833/02/30 06:67:85 by glaguyon          #+#    #+#             */
-/*   Updated: 2024/12/04 22:49:20 by glaguyon         ###   ########.fr       */
+/*   Updated: 2024/12/05 18:50:34 by glaguyon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CURE_HPP
 # define CURE_HPP
 
-#include "AMateria.h"
+#include "AMateria.hpp"
 
 class Cure : public AMateria
 {

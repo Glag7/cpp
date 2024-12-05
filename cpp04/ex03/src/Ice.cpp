@@ -6,7 +6,7 @@
 /*   By: glaguyon           <skibidi@ohio.sus>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 1833/02/30 06:67:85 by glaguyon          #+#    #+#             */
-/*   Updated: 2024/12/04 22:55:23 by glaguyon         ###   ########.fr       */
+/*   Updated: 2024/12/05 18:54:56 by glaguyon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,18 +25,19 @@ Ice::Ice(const Ice &i) : AMateria(i)
 
 Ice &Ice::operator=(const Ice &i)
 {
+	AMateria::operator=(i);
 	std::cout << "vomit inducing ice =\n";
 	return *this;
 }
 
-void	Ice::use(ICharacter& target);
+void	Ice::use(ICharacter& target)
 {
-	std::cout << "* shoots an ice bolt at " << target.getName() < " *\n";
+	std::cout << "* shoots an ice bolt at " << target.getName() << " *\n";
 }
 
 AMateria*	Ice::clone() const
 {
-	return new AMateria(*this);
+	return new Ice(*this);
 }
 
 Ice::~Ice()

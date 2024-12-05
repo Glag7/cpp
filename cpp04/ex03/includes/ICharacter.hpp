@@ -6,7 +6,7 @@
 /*   By: glaguyon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 23:06:28 by glaguyon          #+#    #+#             */
-/*   Updated: 2024/12/04 23:08:09 by glaguyon         ###   ########.fr       */
+/*   Updated: 2024/12/05 18:48:45 by glaguyon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 # define ICHARACTER_H
 
 #include <string>
+#include "AMateria.hpp"
+
+class AMateria;
 
 class ICharacter
 {

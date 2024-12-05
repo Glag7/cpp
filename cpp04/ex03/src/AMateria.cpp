@@ -6,7 +6,7 @@
 /*   By: glaguyon           <skibidi@ohio.sus>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 1833/02/30 06:67:85 by glaguyon          #+#    #+#             */
-/*   Updated: 2024/12/04 22:58:20 by glaguyon         ###   ########.fr       */
+/*   Updated: 2024/12/05 19:13:55 by glaguyon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ std::string const	&AMateria::getType() const
 	return _type;
 }
 
-void	use(ICharacter& target);
+void	AMateria::use(ICharacter& target)
 {
 	std::cout << "some idiotic materia is being used on " << target.getName() << "\n";
 }

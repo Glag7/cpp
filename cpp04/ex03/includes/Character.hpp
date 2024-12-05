@@ -6,7 +6,7 @@
 /*   By: glaguyon           <skibidi@ohio.sus>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 1833/02/30 06:67:85 by glaguyon          #+#    #+#             */
-/*   Updated: 2024/12/04 23:36:37 by glaguyon         ###   ########.fr       */
+/*   Updated: 2024/12/05 19:12:56 by glaguyon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@
 #include "Cure.hpp"
 #include "ICharacter.hpp"
 
-class Character
+class Character : public ICharacter
 {
 	std::string	_name;
-	AMateria	_inv[4];
+	AMateria	*_inv[4];
 	public:
 	Character();
 	Character(std::string name);
