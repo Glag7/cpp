@@ -6,7 +6,7 @@
 /*   By: glaguyon           <skibidi@ohio.sus>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 1833/02/30 06:67:85 by glaguyon          #+#    #+#             */
-/*   Updated: 2024/12/05 19:03:22 by glaguyon         ###   ########.fr       */
+/*   Updated: 2024/12/05 20:21:37 by glaguyon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,8 @@ void	Character::use(int idx, ICharacter& target)
 {
 	if (idx >= 0 && idx <= 3 && _inv[idx])
 		_inv[idx]->use(target);
-	std::cout << "vorp\n";
+	else
+		std::cout << "vorp\n";
 }
 
 Character::~Character()
