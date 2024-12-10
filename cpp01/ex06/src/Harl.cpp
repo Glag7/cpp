@@ -51,5 +51,8 @@ void	Harl::complain(std::string level)
 		_warning();
 	case 3:
 		_error();
+		break;
+	default:
+		std::cout << "sigma sigma boy, sigma boy, sigma boy\n";
 	}
 }
