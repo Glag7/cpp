@@ -6,7 +6,7 @@
 /*   By: glaguyon           <skibidi@ohio.sus>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 1833/02/30 06:67:85 by glaguyon          #+#    #+#             */
-/*   Updated: 2025/01/10 14:41:05 by glaguyon         ###   ########.fr       */
+/*   Updated: 2025/01/10 15:17:23 by glaguyon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define BUREAUCRAT_HPP
 
 # include <string>
+# include "ExceptionTemplate.hpp"
 
 # define BUR_HIGH 1
 # define BUR_LOW 150
@@ -32,6 +33,9 @@ class Bureaucrat
 	const std::string	&getName() const;
 	void	incrementGrade();
 	void	decrementGrade();
+	
+	EXC_CLASS(GradeTooHighException)
+	EXC_CLASS(GradeTooLowException)
 };
 
 std::ostream	&operator<<(std::ostream &o, Bureaucrat &b);

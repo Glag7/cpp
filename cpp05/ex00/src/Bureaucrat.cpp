@@ -6,12 +6,15 @@
 /*   By: glaguyon           <skibidi@ohio.sus>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 1833/02/30 06:67:85 by glaguyon          #+#    #+#             */
-/*   Updated: 2025/01/10 14:42:26 by glaguyon         ###   ########.fr       */
+/*   Updated: 2025/01/10 15:44:41 by glaguyon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include "Bureaucrat.hpp"
+
+EXC_FUNC(Bureaucrat, GradeTooHighException, "bureaucrat grade too high")
+EXC_FUNC(Bureaucrat, GradeTooLowException, "bureaucrat grade too low")
 
 Bureaucrat::Bureaucrat() : _name("defaultcrat")
 {
@@ -21,7 +24,11 @@ Bureaucrat::Bureaucrat() : _name("defaultcrat")
 
 Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name)
 {
-	_grade = grade;//XXX
+	if (grade > BUR_LOW)
+		throw GradeTooLowException();
+	if (grade < BUR_HIGH)
+		throw GradeTooHighException();
+	_grade = grade;
 	std::cout << "hello " << name << "\n";
 }
 
@@ -53,18 +60,22 @@ const std::string	&Bureaucrat::getName() const
 	return _name;
 }
 
-void	incrementGrade()
+void	Bureaucrat::incrementGrade()
 {
+	if (_grade == BUR_HIGH)
+		throw GradeTooHighException();
 	_grade--; //??
 }
 
-void	decrementGrade()
+void	Bureaucrat::decrementGrade()
 {
+	if (_grade == BUR_LOW)
+		throw GradeTooLowException();
 	_grade++;
 }
 
 std::ostream	&operator<<(std::ostream &o, Bureaucrat &b)
 {
-	o << "name: " << b.getName() << ", grade: " << b.getGrade() << "\n";
+	o << "name: " << b.getName() << ", grade: " << b.getGrade();
 	return o;
 }
