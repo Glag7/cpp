@@ -6,7 +6,7 @@
 /*   By: glaguyon           <skibidi@ohio.sus>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 1833/02/30 06:67:85 by glaguyon          #+#    #+#             */
-/*   Updated: 2025/01/12 18:33:16 by glaguyon         ###   ########.fr       */
+/*   Updated: 2025/01/12 19:29:29 by glaguyon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ void	Bureaucrat::decrementGrade()
 	_grade++;
 }
 
-void	Bureaucrat::signAForm(AForm &f)
+void	Bureaucrat::signForm(AForm &f)
 {
 	try
 	{

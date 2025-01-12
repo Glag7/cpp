@@ -6,83 +6,46 @@
 /*   By: glaguyon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 20:28:57 by glaguyon          #+#    #+#             */
-/*   Updated: 2025/01/12 18:17:42 by glaguyon         ###   ########.fr       */
+/*   Updated: 2025/01/12 19:43:36 by glaguyon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <string>
 #include <iostream>
 #include "Bureaucrat.hpp"
-#include "AForm.hpp"
+#include "ShrubberyCreationForm.hpp"
+#include "RobotomyRequestForm.hpp"
+#include "PresidentialPardonForm.hpp"
+
+void	test(AForm *form, int sign, int exc)
+{
+	Bureaucrat	bob("Bob", sign);
+	Bureaucrat	joe("Joe", exc);
+
+	joe.executeForm(*form);
+	bob.signForm(*form);
+	bob.executeForm(*form);
+	joe.executeForm(*form);
+	joe.executeForm(*form);
+	joe.executeForm(*form);
+}
 
 int main()
 {
-	try
 	{
-		AForm	stupid("Bob", 151, 1);
+		AForm	*form = new ShrubberyCreationForm("tree");
+		test(form, 145, 137);
+		delete form;
 	}
-	catch (std::exception &e)
 	{
-		std::cout << "chokbar: " << e.what() << "\n";
+		AForm	*form = new RobotomyRequestForm("jorn");
+		test(form, 72, 45);
+		delete form;
 	}
-	try
 	{
-		AForm	stupid("Bob", 1, 151);
+		AForm	*form = new PresidentialPardonForm("sigma boy");
+		test(form, 25, 5);
+		delete form;
 	}
-	catch (std::exception &e)
-	{
-		std::cout << "chokbar: " << e.what() << "\n";
-	}
-	try
-	{
-		AForm	stupid("Bob", 0, 1);
-	}
-	catch (std::exception &e)
-	{
-		std::cout << "chokbar: " << e.what() << "\n";
-	}
-	try
-	{
-		AForm	stupid("Bob", 1, 0);
-	}
-	catch (std::exception &e)
-	{
-		std::cout << "chokbar: " << e.what() << "\n";
-	}
-
-	Bureaucrat	jorn("Jorn", 7);
-	AForm		ellanglo("golem form", 5, 5);
-
-	std::cout << jorn << "\n";
-	std::cout << ellanglo << "\n";
-	try
-	{
-		jorn.signAForm(ellanglo);
-	}
-	catch (std::exception &e)
-	{
-		std::cout << "chokbar: " << e.what() << "\n";
-	}
-	jorn.incrementGrade();
-	std::cout << jorn << "\n";
-	std::cout << ellanglo << "\n";
-	try
-	{
-		jorn.signAForm(ellanglo);
-	}
-	catch (std::exception &e)
-	{
-		std::cout << "chokbar: " << e.what() << "\n";
-	}
-	jorn.incrementGrade();
-	std::cout << jorn << "\n";
-	std::cout << ellanglo << "\n";
-	try
-	{
-		jorn.signAForm(ellanglo);
-	}
-	catch (std::exception &e)
-	{
-		std::cout << "chokbar: " << e.what() << "\n";
-	}
+	//tester isSigned avec copie
 }

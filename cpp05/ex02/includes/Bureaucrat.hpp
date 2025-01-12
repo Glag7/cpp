@@ -6,7 +6,7 @@
 /*   By: glaguyon           <skibidi@ohio.sus>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 1833/02/30 06:67:85 by glaguyon          #+#    #+#             */
-/*   Updated: 2025/01/12 18:28:24 by glaguyon         ###   ########.fr       */
+/*   Updated: 2025/01/12 19:29:09 by glaguyon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ class Bureaucrat
 	const std::string	&getName() const;
 	void	incrementGrade();
 	void	decrementGrade();
-	void	signAForm(AForm &f);
+	void	signForm(AForm &f);
 	void	executeForm(AForm const &f);
 	
 	EXC_CLASS(GradeTooHighException)

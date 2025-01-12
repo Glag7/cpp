@@ -5,10 +5,13 @@ OBJ_DIR = obj/
 HDR_DIR = includes/
 
 COMP = c++
-CPPFLAGS = -Wall -Wextra -Werror -std=c++98
+CPPFLAGS = -Wall -Wextra -Werror -std=c++98 -g
 
 SRC = Bureaucrat.cpp \
       AForm.cpp \
+      ShrubberyCreationForm.cpp \
+      RobotomyRequestForm.cpp \
+      PresidentialPardonForm.cpp \
       main.cpp
 
 OBJ = $(SRC:.cpp=.o)

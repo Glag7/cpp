@@ -6,7 +6,7 @@
 /*   By: glaguyon           <skibidi@ohio.sus>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 1833/02/30 06:67:85 by glaguyon          #+#    #+#             */
-/*   Updated: 2025/01/12 18:23:37 by glaguyon         ###   ########.fr       */
+/*   Updated: 2025/01/12 19:36:10 by glaguyon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ class AForm
 	AForm(std::string name, int signGrade, int execGrade);
 	AForm(const AForm &f);
 	AForm &operator=(const AForm &f);
-	~AForm();
+	virtual	~AForm();
 	const std::string	&getName() const;
 	bool			getSigned() const;
 	int			getSignGrade() const;
