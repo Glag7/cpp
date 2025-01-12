@@ -6,7 +6,7 @@
 /*   By: glaguyon           <skibidi@ohio.sus>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 1833/02/30 06:67:85 by glaguyon          #+#    #+#             */
-/*   Updated: 2025/01/12 19:59:58 by glaguyon         ###   ########.fr       */
+/*   Updated: 2025/01/12 21:06:51 by glaguyon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,14 @@ PresidentialPardonForm::PresidentialPardonForm(const std::string &target) : AFor
 	std::cout << "hello president " << target << "\n";
 }
 
-PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm &p)
+PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm &p) : AForm(p)
 {
-	*this = p;
 	std::cout << "president copy\n";
 }
 
 PresidentialPardonForm &PresidentialPardonForm::operator=(const PresidentialPardonForm &p)
 {
+	this->AForm::operator=(p);
 	_target = p._target;
 	std::cout << "hello = president\n";
 	return *this;

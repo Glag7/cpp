@@ -6,7 +6,7 @@
 /*   By: glaguyon           <skibidi@ohio.sus>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 1833/02/30 06:67:85 by glaguyon          #+#    #+#             */
-/*   Updated: 2025/01/12 20:01:43 by glaguyon         ###   ########.fr       */
+/*   Updated: 2025/01/12 21:07:03 by glaguyon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,14 @@ RobotomyRequestForm::RobotomyRequestForm(const std::string &target) : AForm("Rob
 	std::cout << "hello drilling " << target << "\n";
 }
 
-RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &r)
+RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &r) : AForm(r)
 {
-	*this = r;
 	std::cout << "drilling drilling\n";
 }
 
 RobotomyRequestForm &RobotomyRequestForm::operator=(const RobotomyRequestForm &r)
 {
+	this->AForm::operator=(r);
 	_target = r._target;
 	std::cout << "hello = drilling\n";
 	return *this;

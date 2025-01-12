@@ -6,7 +6,7 @@
 /*   By: glaguyon           <skibidi@ohio.sus>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 1833/02/30 06:67:85 by glaguyon          #+#    #+#             */
-/*   Updated: 2025/01/12 19:38:34 by glaguyon         ###   ########.fr       */
+/*   Updated: 2025/01/12 21:07:18 by glaguyon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,14 +28,14 @@ ShrubberyCreationForm::ShrubberyCreationForm(const std::string &target) : AForm(
 	std::cout << "hello tree " << target << "\n";
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &s)
+ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &s) : AForm(s)
 {
-	*this = s;
 	std::cout << "tree copy\n";
 }
 
 ShrubberyCreationForm &ShrubberyCreationForm::operator=(const ShrubberyCreationForm &s)
 {
+	this->AForm::operator=(s);
 	_target = s._target;
 	std::cout << "tree =\n";
 	return *this;

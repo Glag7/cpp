@@ -6,7 +6,7 @@
 /*   By: glaguyon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 20:28:57 by glaguyon          #+#    #+#             */
-/*   Updated: 2025/01/12 19:43:36 by glaguyon         ###   ########.fr       */
+/*   Updated: 2025/01/12 20:52:13 by glaguyon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,5 +47,4 @@ int main()
 		test(form, 25, 5);
 		delete form;
 	}
-	//tester isSigned avec copie
 }

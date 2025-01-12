@@ -5,7 +5,7 @@ OBJ_DIR = obj/
 HDR_DIR = includes/
 
 COMP = c++
-CPPFLAGS = -Wall -Wextra -Werror -std=c++98 -g
+CPPFLAGS = -Wall -Wextra -Werror -std=c++98
 
 SRC = Bureaucrat.cpp \
       AForm.cpp \
