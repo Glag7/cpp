@@ -6,7 +6,7 @@
 /*   By: glaguyon           <skibidi@ohio.sus>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 1833/02/30 06:67:85 by glaguyon          #+#    #+#             */
-/*   Updated: 2025/01/12 18:26:53 by glaguyon         ###   ########.fr       */
+/*   Updated: 2025/01/12 18:32:49 by glaguyon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ void			AForm::beSigned(Bureaucrat &b)
 	_isSigned = true;
 }
 
-void			execute(Bureaucrat const &b) const
+void			AForm::execute(Bureaucrat const &b) const
 {
 	if (!_isSigned)
 		throw NotSignedException();

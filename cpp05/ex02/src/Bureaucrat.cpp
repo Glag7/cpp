@@ -6,7 +6,7 @@
 /*   By: glaguyon           <skibidi@ohio.sus>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 1833/02/30 06:67:85 by glaguyon          #+#    #+#             */
-/*   Updated: 2025/01/12 18:31:33 by glaguyon         ###   ########.fr       */
+/*   Updated: 2025/01/12 18:33:16 by glaguyon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,11 +89,11 @@ void	Bureaucrat::signAForm(AForm &f)
 	}
 }
 
-void	executeForm(AForm const &f)
+void	Bureaucrat::executeForm(AForm const &f)
 {
 	try
 	{
-		f.execute();
+		f.execute(*this);
 		std::cout << "bureaucrat " << _name << " executed form " << f.getName() << "\n";
 	}
 	catch (std::exception &e)
