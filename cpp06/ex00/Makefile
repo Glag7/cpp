@@ -5,7 +5,7 @@ OBJ_DIR = obj/
 HDR_DIR = includes/
 
 COMP = c++
-CPPFLAGS = -Wall -Wextra -Werror -std=c++98
+CPPFLAGS = -Wall -Wextra -Werror -std=c++98 -g
 
 SRC = ScalarConverter.cpp \
       main.cpp
