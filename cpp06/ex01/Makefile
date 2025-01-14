@@ -1,4 +1,4 @@
-NAME = scalar
+NAME = serialize
 
 SRC_DIR = src/
 OBJ_DIR = obj/
@@ -7,7 +7,8 @@ HDR_DIR = includes/
 COMP = c++
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98
 
-SRC = ScalarConverter.cpp \
+SRC = Serializer.cpp \
+      Data.cpp \
       main.cpp
 
 OBJ = $(SRC:.cpp=.o)

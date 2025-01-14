@@ -1,23 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Data.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: glaguyon <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: glaguyon           <skibidi@ohio.sus>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/13 14:28:34 by glaguyon          #+#    #+#             */
-/*   Updated: 2025/01/14 14:13:40 by glaguyon         ###   ########.fr       */
+/*   Created: 1833/02/30 06:67:85 by glaguyon          #+#    #+#             */
+/*   Updated: 2025/01/14 14:24:34 by glaguyon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
-#include "ScalarConverter.hpp"
+#ifndef DATA_HPP
+# define DATA_HPP
 
-int	main(int argc, char **argv)
+#include <string>
+
+class Data
 {
-	(void)argc;
-	if (!argv[1])
-		std::cout << "where arg\n";
-	else
-		ScalarConverter::convert(argv[1]);
-}
+	std::string	_stuff;
+	public:
+	Data();
+	Data(const std::string &s);
+	Data(const Data &d);
+	Data &operator=(const Data &d);
+	~Data();
+	void	printStuff();
+};
+
+#endif // DATA_HPP
