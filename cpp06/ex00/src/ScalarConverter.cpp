@@ -6,7 +6,7 @@
 /*   By: glaguyon           <skibidi@ohio.sus>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 1833/02/30 06:67:85 by glaguyon          #+#    #+#             */
-/*   Updated: 2025/01/13 21:18:50 by glaguyon         ###   ########.fr       */
+/*   Updated: 2025/01/14 14:10:10 by glaguyon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ void	convertFromChar(const std::string &s)
 
 	std::cout << "char: '" << c << "'\n"
 		<< "int: " << static_cast<int>(c) << "\n"
-		<< "float: " << std::fixed << static_cast<float>(c) << "\n"
+		<< "float: " << std::fixed << static_cast<float>(c) << "f\n"
 		<< "double: " << std::fixed << static_cast<double>(c) << "\n";
 }
 
@@ -110,15 +110,16 @@ void	convertFromInt(const std::string &s)
 	l = std::strtol(s.c_str(), &end, 10);
 	if (errno == ERANGE)
 		return convertFromError(s);
-	i = static_cast<int>(l);
-	if (i != l)
+	if (std::numeric_limits<int>::min() + static_cast<int>(l) > 0
+		|| std::numeric_limits<int>::max() - static_cast<int>(l) < 0)
 		return convertFromError(s);
+	i = static_cast<int>(l);
 	if (i >= 32 && i <= 126)
 		std::cout << "char: '" << static_cast<char>(i) << "'\n";
 	else
 		std::cout << "char: non displayable\n";
 	std::cout << "int: " << i << "\n"
-		<< "float: " << std::fixed << static_cast<float>(i) << "\n"
+		<< "float: " << std::fixed << static_cast<float>(i) << "f\n"
 		<< "double: " << std::fixed << static_cast<double>(i) << "\n";
 }
 
@@ -144,7 +145,7 @@ void	convertFromFloat(const std::string &s)
 		std::cout << "int: impossible\n";
 	else
 		std::cout << "int: " << static_cast<int>(d) << "\n";
-	std::cout << "float: " << std::fixed << static_cast<float>(d) << "\n"
+	std::cout << "float: " << std::fixed << static_cast<float>(d) << "f\n"
 		<< "double: " << std::fixed << d << "\n";
 }
 
@@ -169,7 +170,7 @@ void	convertFromDouble(const std::string &s)
 	if (std::fabs(static_cast<float>(d)) == std::numeric_limits<float>::infinity())
 		std::cout << "float: impossible\n";
 	else
-		std::cout << "float: " << std::fixed << static_cast<float>(d) << "\n";
+		std::cout << "float: " << std::fixed << static_cast<float>(d) << "f\n";
 	std::cout << "double: " << std::fixed << d << "\n";
 }
 

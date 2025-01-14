@@ -6,7 +6,7 @@
 /*   By: glaguyon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 14:28:34 by glaguyon          #+#    #+#             */
-/*   Updated: 2025/01/13 15:44:41 by glaguyon         ###   ########.fr       */
+/*   Updated: 2025/01/14 14:03:15 by glaguyon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,5 +18,6 @@ int	main(int argc, char **argv)
 	(void)argc;
 	if (!argv[1])
 		std::cout << "where arg\n";
-	ScalarConverter::convert(argv[1]);
+	else
+		ScalarConverter::convert(argv[1]);
 }
