@@ -6,7 +6,7 @@
 /*   By: glaguyon           <skibidi@ohio.sus>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 1833/02/30 06:67:85 by glaguyon          #+#    #+#             */
-/*   Updated: 2025/01/15 18:59:16 by glaguyon         ###   ########.fr       */
+/*   Updated: 2025/01/15 19:20:07 by glaguyon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,16 @@ void	Span::addNumber(int n)
 	if (_arr.size() >= _maxSize)
 		throw std::length_error("Cannot add more numbers to span");
 	_arr.push_back(n);
+}
+
+void	Span::addNumber(std::vector<int>::iterator start, std::vector<int>::iterator end)
+{
+	for (std::vector<int>::iterator it = start; it != end; ++it)
+	{
+		if (_arr.size() >= _maxSize)
+			throw std::length_error("Cannot add more numbers to span");
+		_arr.push_back(*it);
+	}
 }
 
 unsigned int	Span::shortestSpan()
