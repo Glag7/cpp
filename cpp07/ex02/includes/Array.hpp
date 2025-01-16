@@ -6,7 +6,7 @@
 /*   By: glaguyon           <skibidi@ohio.sus>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 1833/02/30 06:67:85 by glaguyon          #+#    #+#             */
-/*   Updated: 2025/01/14 19:30:58 by glaguyon         ###   ########.fr       */
+/*   Updated: 2025/01/16 21:13:21 by glaguyon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ class Array
 	Array(const Array &a);
 	Array &operator=(const Array &a);
 	T	&operator[](size_t i);
+	const T	&operator[](size_t i) const;
 	~Array();
 	size_t	size() const;
 };

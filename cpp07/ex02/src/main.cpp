@@ -6,7 +6,7 @@
 /*   By: glaguyon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 14:28:34 by glaguyon          #+#    #+#             */
-/*   Updated: 2025/01/14 19:47:50 by glaguyon         ###   ########.fr       */
+/*   Updated: 2025/01/16 21:19:39 by glaguyon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,12 @@ int	main(void)
 		catch (std::exception &e)
 		{
 			std::cout << "exception: " << e.what() <<"\n";
+		}
+		{
+			const Array<int>	arr(4);
+			
+			//arr[0] = 1;
+			std::cout << "compile please " << arr[0] << "\n";
 		}
 	}
 }

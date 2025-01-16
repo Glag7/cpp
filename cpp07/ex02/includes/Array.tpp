@@ -58,6 +58,14 @@ T	&Array<T>::operator[](size_t i)
 }
 
 template <typename T>
+const T	&Array<T>::operator[](size_t i) const
+{
+	if (i >= _size)
+		throw std::out_of_range("Array index out of range");
+	return _array[i];
+}
+
+template <typename T>
 Array<T>::~Array()
 {
 	delete[] _array;
