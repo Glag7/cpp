@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   BitcoinExchange.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: glaguyon <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: glaguyon           <skibidi@ohio.sus>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/16 18:47:17 by glaguyon          #+#    #+#             */
-/*   Updated: 2025/01/16 22:01:34 by glaguyon         ###   ########.fr       */
+/*   Created: 1833/02/30 06:67:85 by glaguyon          #+#    #+#             */
+/*   Updated: 2025/01/17 16:36:05 by glaguyon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,24 @@
 #include	<string>
 #include	<iostream>
 #include	<cstdlib>
+#include	"ExceptionTemplate.hpp" 
 
-std::map<size_t, double>	parsePrices();
+class BitcoinExchange
+{
+	BitcoinExchange();
+	BitcoinExchange(const BitcoinExchange &b);
+	BitcoinExchange &operator=(const BitcoinExchange &b);
+	~BitcoinExchange();
+	public:
+	static	std::map<size_t, double>	parseDatabase(
+		const std::string &filename, const std::string &sep, double maxValue);
 
-#endif
+	EXC_CLASS(NoFileFoundException);
+	EXC_CLASS(NoSeparatorFoundException);
+	EXC_CLASS(WrongDateFormatException);
+	EXC_CLASS(WrongDateException);
+	EXC_CLASS(WrongValueFormatException);
+	EXC_CLASS(ValueTooHighException);
+};
+
+#endif // BITCOINEXCHANGE_HPP

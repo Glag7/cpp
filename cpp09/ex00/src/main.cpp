@@ -6,22 +6,37 @@
 /*   By: glaguyon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 14:28:34 by glaguyon          #+#    #+#             */
-/*   Updated: 2025/01/16 20:49:43 by glaguyon         ###   ########.fr       */
+/*   Updated: 2025/01/17 17:51:31 by glaguyon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include "BitcoinExchange.hpp"
 
-int	main(void)
+int	main(int argc, char **argv)
 {
+	if (argc != 2)
+	{
+		std::cout << "give one database\n";
+		return 1;
+	}
+	
+	std::map<size_t, double>	prices;
+	std::map<size_t, double>	input;
 	try
 	{
-		std::map<size_t, double>	prices = parsePrices();
-		std::cout << prices[0];
+		prices = BitcoinExchange::parseDatabase("data.csv", ",", -1.);
 	}
 	catch (std::exception &e)
 	{
 		std::cout << "Could not acquire prices: " << e.what() << "\n";
+	}
+	try
+	{
+		input = BitcoinExchange::parseDatabase("data.csv", " | ", 1000.);
+	}
+	catch (std::exception &e)
+	{
+		std::cout << "Could not acquire input: " << e.what() << "\n";
 	}
 }

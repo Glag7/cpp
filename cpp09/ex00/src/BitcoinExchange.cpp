@@ -3,14 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   BitcoinExchange.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: glaguyon <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: glaguyon           <skibidi@ohio.sus>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/16 18:42:32 by glaguyon          #+#    #+#             */
-/*   Updated: 2025/01/16 23:24:30 by glaguyon         ###   ########.fr       */
+/*   Created: 1833/02/30 06:67:85 by glaguyon          #+#    #+#             */
+/*   Updated: 2025/01/17 17:46:26 by glaguyon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <iostream>
 #include "BitcoinExchange.hpp"
+
+EXC_FUNC(BitcoinExchange, NoFileFoundException, "no file found");
+EXC_FUNC(BitcoinExchange, NoSeparatorFoundException, "no separator found");
+EXC_FUNC(BitcoinExchange, WrongDateFormatException, "wrong date format");
+EXC_FUNC(BitcoinExchange, WrongDateException, "date does not exist");
+EXC_FUNC(BitcoinExchange, WrongValueFormatException, "wrong value format");
+EXC_FUNC(BitcoinExchange, ValueTooHighException, "value too high");
 
 static size_t	getNumber(const std::string &s, size_t expectedLen)
 {
@@ -19,60 +27,75 @@ static size_t	getNumber(const std::string &s, size_t expectedLen)
 	for(size_t i = 0; i < expectedLen; ++i)
 	{
 		if (s[i] < '0' || s[i] > '9')
-			return -1;
+			throw	BitcoinExchange::WrongDateFormatException();
 		n = 10 * n + s[i] - '0';
 	}
 	return n;
 }
 
-std::map<size_t, double>	parsePrices()//TODO exceptions
+static size_t	getDate(const std::string &date)
 {
-	std::map<size_t, double>	prices;
-	std::ifstream	in("data.csv");
+	size_t	year, month, day;
+
+	if (date.size() != 10 || date[4] != '-' || date[7] != '-')
+		throw BitcoinExchange::WrongDateFormatException();
+	year = getNumber(date, 4);
+	month = getNumber(&date[5], 2);
+	day = getNumber(&date[8], 2);
+	if (month == 0 || month > 12 || day == 0 || day > 31
+	|| (day == 31 && (month == 2 || month == 4 || month == 6 || month == 9 || month == 11))
+	|| (day == 30 && month == 2)
+	|| (day == 29 && month == 2 && (year % 4 != 0 || (year % 100 == 0 && year % 400 != 0))))
+		throw BitcoinExchange::WrongDateException();
+	return year * 1e4 + month * 1e2 + day;
+}
+
+static double	getValue(const std::string &value, double maxValue)
+{
+	double	valueDouble;
+
+	if (value.size() == 0)
+		throw BitcoinExchange::WrongValueFormatException();
+	for (std::string::const_iterator it = value.begin(); it < value.end(); ++it)
+	{
+		if ((*it < '0' || *it > '9') && *it != '.')
+			throw BitcoinExchange::WrongValueFormatException();
+	}
+	errno = 0;
+	valueDouble = std::strtod(value.c_str(), 0);
+	if (errno == ERANGE || (maxValue > 0. && valueDouble > maxValue))
+		throw BitcoinExchange::ValueTooHighException();
+	return valueDouble;
+}
+
+std::map<size_t, double>	BitcoinExchange::parseDatabase(
+	const std::string &filename, const std::string &sep, double maxValue)
+{
+	std::map<size_t, double>	database;
+	std::ifstream	in(filename.c_str());
 	std::string	line;
 
 	if (!in)
-		throw std::runtime_error("prices database not found");
+		throw NoFileFoundException();
 	std::getline(in, line);
 	while (std::getline(in, line))
 	{
-		size_t		comma, year, month, day;
-		std::string	date, price;
-		char		*end;
-		double		priceDouble;
+		size_t		sepPos, date;
+		double		value;
 
-		std::cout << line << "\n";
-		comma = line.find(",");
-		if (comma == std::string::npos)
-			throw std::runtime_error("wrong format (no comma found)");
-
-		date = line.substr(0, comma);
-		if (date.size() != 10)
-			throw std::runtime_error("wrong format (wrong date length)");
-		if (date[4] != '-' || date[7] != '-')
-			throw std::runtime_error("wrong format (missing dash)");
-		year = getNumber(date, 4);
-		if (year == -1ULL)
-			throw std::runtime_error("wrong format (year)");
-		month = getNumber(date, 4);
-		if (month == -1ULL)
-			throw std::runtime_error("wrong format (month)");
-		day = getNumber(date, 4);
-		if (day == -1ULL)
-			throw std::runtime_error("wrong format (day)");
-		//TODO check date exist
-
-		price = line.substr(comma + 1, line.size());
-		if (price.size() < 1 || price[0] < '0' || price[0] > '9')
-			throw std::runtime_error("wrong format (price)");//TODO check only num
-		errno = 0;
-		priceDouble = std::strtod(price.c_str(), &end);
-		if (errno == ERANGE || priceDouble > 1000.)
-			throw std::runtime_error("wrong value (price)");
-
-		prices.insert(std::pair<size_t, double>
-			(year * 10000 + month * 100 + day, priceDouble)); 
+		sepPos = line.find(sep);
+		if (sepPos == std::string::npos)
+			throw NoSeparatorFoundException();
+		date = getDate(line.substr(0, sepPos));
+		value = getValue(line.substr(sepPos + sep.size()), maxValue);
+		database.insert(std::pair<size_t, double>(date, value)); 
 	}
 	in.close();
-	return prices;
+	return database;
 }
+
+BitcoinExchange::BitcoinExchange(){}
+BitcoinExchange::BitcoinExchange(const BitcoinExchange &b){(void)b;}
+BitcoinExchange &BitcoinExchange::operator=(const BitcoinExchange &b){(void)b;return *this;}
+BitcoinExchange::~BitcoinExchange(){}
+
