@@ -6,7 +6,7 @@
 /*   By: glaguyon           <skibidi@ohio.sus>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 1833/02/30 06:67:85 by glaguyon          #+#    #+#             */
-/*   Updated: 2025/01/17 17:46:26 by glaguyon         ###   ########.fr       */
+/*   Updated: 2025/01/17 17:59:40 by glaguyon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,8 +68,22 @@ static double	getValue(const std::string &value, double maxValue)
 	return valueDouble;
 }
 
+static std::pair<size_t, double>	parseLine(
+	const std::string &line, const std::string &sep, double maxValue)
+{
+	size_t		sepPos, date;
+	double		value;
+
+	sepPos = line.find(sep);
+	if (sepPos == std::string::npos)
+		throw BitcoinExchange::NoSeparatorFoundException();
+	date = getDate(line.substr(0, sepPos));
+	value = getValue(line.substr(sepPos + sep.size()), maxValue);
+	return std::pair<size_t, double>(date, value);
+}
+
 std::map<size_t, double>	BitcoinExchange::parseDatabase(
-	const std::string &filename, const std::string &sep, double maxValue)
+	const std::string &filename, const std::string &sep, double maxValue, bool explode)
 {
 	std::map<size_t, double>	database;
 	std::ifstream	in(filename.c_str());
@@ -80,15 +94,16 @@ std::map<size_t, double>	BitcoinExchange::parseDatabase(
 	std::getline(in, line);
 	while (std::getline(in, line))
 	{
-		size_t		sepPos, date;
-		double		value;
-
-		sepPos = line.find(sep);
-		if (sepPos == std::string::npos)
-			throw NoSeparatorFoundException();
-		date = getDate(line.substr(0, sepPos));
-		value = getValue(line.substr(sepPos + sep.size()), maxValue);
-		database.insert(std::pair<size_t, double>(date, value)); 
+		try
+		{
+			database.insert(parseLine(line, sep, maxValue)); 
+		}
+		catch (std::exception &e)
+		{
+			if (explode)
+				throw;
+			//XXX messages need to be in order ???
+		}
 	}
 	in.close();
 	return database;
