@@ -6,7 +6,7 @@
 /*   By: glaguyon           <skibidi@ohio.sus>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 1833/02/30 06:67:85 by glaguyon          #+#    #+#             */
-/*   Updated: 2025/01/19 15:41:03 by glaguyon         ###   ########.fr       */
+/*   Updated: 2025/01/19 16:26:35 by glaguyon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,9 +118,10 @@ void	BitcoinExchange::showValues(std::map<size_t, double> database,
 		try
 		{
 			lineData = parseLine(line, sep, maxValue);
-			//XXX check databse size pas 0, et utiliser it-1 si end
 			if (database.lower_bound(lineData.first) == database.end())
-				std::cout << "I can't the the future\n";
+				std::cout << line.substr(0, 10)
+				<< " => " << lineData.second
+				<< " = " << (--database.end())->second * lineData.second << "\n";
 			else
 				std::cout << line.substr(0, 10)
 				<< " => " << lineData.second
