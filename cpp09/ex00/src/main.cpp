@@ -6,7 +6,7 @@
 /*   By: glaguyon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 14:28:34 by glaguyon          #+#    #+#             */
-/*   Updated: 2025/01/17 17:51:31 by glaguyon         ###   ########.fr       */
+/*   Updated: 2025/01/19 15:07:17 by glaguyon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,5 @@ int	main(int argc, char **argv)
 	{
 		std::cout << "Could not acquire prices: " << e.what() << "\n";
 	}
-	try
-	{
-		input = BitcoinExchange::parseDatabase("data.csv", " | ", 1000.);
-	}
-	catch (std::exception &e)
-	{
-		std::cout << "Could not acquire input: " << e.what() << "\n";
-	}
+	BitcoinExchange::showValues(prices, argv[1], " | ", 1000.);
 }
