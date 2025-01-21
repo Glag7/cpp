@@ -1,20 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   RPN.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: glaguyon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/13 14:28:34 by glaguyon          #+#    #+#             */
-/*   Updated: 2025/01/21 21:52:06 by glaguyon         ###   ########.fr       */
+/*   Created: 2025/01/21 21:47:48 by glaguyon          #+#    #+#             */
+/*   Updated: 2025/01/21 21:51:20 by glaguyon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "RPN.hpp"
+#ifndef RPN_HPP
+# define RPN_HPP
 
-int	main(int argc, char **argv)
-{
-	if (argc != 2)
-		ERROR
-	return rpn(argv[1]);
+#include <iostream>
+#include <stack>
+#include <string>
+#include <exception>
+
+#define ERROR	\
+{ \
+ std::cout << "Error\n"; \
+ return 1; \
 }
+
+int	rpn(const std::string &s);
+
+#endif
