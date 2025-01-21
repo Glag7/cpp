@@ -6,7 +6,7 @@
 /*   By: glaguyon           <skibidi@ohio.sus>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 1833/02/30 06:67:85 by glaguyon          #+#    #+#             */
-/*   Updated: 2025/01/19 15:34:50 by glaguyon         ###   ########.fr       */
+/*   Updated: 2025/01/21 21:42:36 by glaguyon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ class BitcoinExchange
 	EXC_CLASS(WrongValueFormatException);
 	EXC_CLASS(ValueTooHighException);
 	EXC_CLASS(NegativeValueException);
+	EXC_CLASS(DatabaseEmptyException);
 };
 
 #endif // BITCOINEXCHANGE_HPP

@@ -6,7 +6,7 @@
 /*   By: glaguyon           <skibidi@ohio.sus>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 1833/02/30 06:67:85 by glaguyon          #+#    #+#             */
-/*   Updated: 2025/01/19 16:26:35 by glaguyon         ###   ########.fr       */
+/*   Updated: 2025/01/21 21:44:53 by glaguyon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ EXC_FUNC(BitcoinExchange, WrongDateException, "date does not exist");
 EXC_FUNC(BitcoinExchange, WrongValueFormatException, "wrong value format");
 EXC_FUNC(BitcoinExchange, NegativeValueException, "value is negative");
 EXC_FUNC(BitcoinExchange, ValueTooHighException, "value too high");
+EXC_FUNC(BitcoinExchange, DatabaseEmptyException, "database is empty");
 
 static size_t	getNumber(const std::string &s, size_t expectedLen)
 {
@@ -112,6 +113,8 @@ void	BitcoinExchange::showValues(std::map<size_t, double> database,
 
 	if (!in)
 		throw NoFileFoundException();
+	if (database.size() == 0)
+		throw DatabaseEmptyException();
 	std::getline(in, line);
 	while (std::getline(in, line))
 	{
