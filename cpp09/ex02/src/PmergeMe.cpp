@@ -6,7 +6,7 @@
 /*   By: glaguyon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 21:59:31 by glaguyon          #+#    #+#             */
-/*   Updated: 2025/01/28 20:19:44 by glaguyon         ###   ########.fr       */
+/*   Updated: 2025/01/28 20:43:09 by glaguyon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static std::vector<unsigned>	pairMergeSort(std::vector<unsigned> vec)
 	return newVec;
 }
 
-void	binInsert(std::vector<unsigned> &sorted, unsigned n)
+static void	binInsert(std::vector<unsigned> &sorted, unsigned n)
 {
 	if (sorted.size() == 0)
 	{
