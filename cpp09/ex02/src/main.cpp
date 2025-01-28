@@ -6,7 +6,7 @@
 /*   By: glaguyon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 14:28:34 by glaguyon          #+#    #+#             */
-/*   Updated: 2025/01/22 16:46:56 by glaguyon         ###   ########.fr       */
+/*   Updated: 2025/01/28 00:20:01 by glaguyon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,13 @@ int	main(int argc, char **argv)
 		std::cout << "Error\n";
 		return 1;
 	}
-	std::cout << "Before: ";
+	std::cout << "Before:\t";
 	for (std::vector<unsigned>::iterator it = vec.begin(); it < vec.end(); ++it)
 		std::cout << *it << " ";
 	std::cout << "\n";
-	//TODO sort
+	epicSortVec(vec);
+	std::cout << "After:\t";
+	for (std::vector<unsigned>::iterator it = vec.begin(); it < vec.end(); ++it)
+		std::cout << *it << " ";
+	std::cout << "\n";
 }
