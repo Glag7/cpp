@@ -6,7 +6,7 @@
 /*   By: glaguyon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 21:59:31 by glaguyon          #+#    #+#             */
-/*   Updated: 2025/01/28 17:41:21 by glaguyon         ###   ########.fr       */
+/*   Updated: 2025/01/28 20:19:44 by glaguyon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,30 @@ static std::vector<unsigned>	pairMergeSort(std::vector<unsigned> vec)
 	return newVec;
 }
 
+void	binInsert(std::vector<unsigned> &sorted, unsigned n)
+{
+	if (sorted.size() == 0)
+	{
+		sorted.insert(sorted.begin(), n);
+		return;
+	}
+
+	ssize_t	left = 0, right = sorted.size() - 1, mid = (left + right) / 2;
+
+	while (left < right)
+	{
+		if (n < sorted[mid])
+			right = mid - 1;
+		else
+			left = mid + 1;
+		mid = (left + right) / 2;
+	}
+	if (sorted[mid] > n)
+		sorted.insert(sorted.begin() + mid, n);
+	else
+		sorted.insert(sorted.begin() + mid + 1, n);
+}
+
 void	epicSortVec(std::vector<unsigned> &vec)
 {
 	size_t	alone = -1ULL;
@@ -55,8 +79,19 @@ void	epicSortVec(std::vector<unsigned> &vec)
 	if (vec.size() % 2)
 		alone = vec[vec.size() - 1];
 	vec = pairMergeSort(vec);
+
+	std::vector<unsigned>	sorted;
+	
+	for (size_t i = vec.size() - 1; i != 0; )
+	{
+		binInsert(sorted, vec[i--]);
+		sorted.insert(sorted.begin(), vec[i]);
+		if (i)
+			--i;
+	}
 	if (alone != -1ULL)
-		vec.push_back(alone);
+		binInsert(sorted, alone);
+	vec = sorted;
 }
 
 void	fillContainers(std::vector<unsigned> &vec, std::deque<unsigned> &deq, char *s)
