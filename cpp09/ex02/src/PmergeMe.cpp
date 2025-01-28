@@ -6,66 +6,11 @@
 /*   By: glaguyon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 21:59:31 by glaguyon          #+#    #+#             */
-/*   Updated: 2025/01/28 20:43:09 by glaguyon         ###   ########.fr       */
+/*   Updated: 2025/01/28 20:53:18 by glaguyon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PmergeMe.hpp"
-
-static std::vector<unsigned>	pairMergeSort(std::vector<unsigned> vec)
-{
-	if (vec.size() < 4)
-		return vec;
-	std::vector<unsigned>	left = pairMergeSort(
-		std::vector<unsigned>(vec.begin(), vec.begin() + vec.size() / 4 * 2));
-	std::vector<unsigned>	right = pairMergeSort(
-		std::vector<unsigned>(vec.begin() + vec.size() / 4 * 2, vec.begin() + vec.size() / 2 * 2));
-	std::vector<unsigned>	newVec;
-	size_t	i = 0, j = 0;
-
-	while (i < left.size() && j < right.size())
-	{
-		if (left[i] < right[j])
-		{
-			newVec.push_back(left[i++]);
-			newVec.push_back(left[i++]);
-		}
-		else
-		{
-			newVec.push_back(right[j++]);
-			newVec.push_back(right[j++]);
-		}
-	}
-	while (i < left.size())
-		newVec.push_back(left[i++]);
-	while (j < right.size())
-		newVec.push_back(right[j++]);
-	return newVec;
-}
-
-static void	binInsert(std::vector<unsigned> &sorted, unsigned n)
-{
-	if (sorted.size() == 0)
-	{
-		sorted.insert(sorted.begin(), n);
-		return;
-	}
-
-	ssize_t	left = 0, right = sorted.size() - 1, mid = (left + right) / 2;
-
-	while (left < right)
-	{
-		if (n < sorted[mid])
-			right = mid - 1;
-		else
-			left = mid + 1;
-		mid = (left + right) / 2;
-	}
-	if (sorted[mid] > n)
-		sorted.insert(sorted.begin() + mid, n);
-	else
-		sorted.insert(sorted.begin() + mid + 1, n);
-}
 
 void	epicSortVec(std::vector<unsigned> &vec)
 {
@@ -92,6 +37,33 @@ void	epicSortVec(std::vector<unsigned> &vec)
 	if (alone != -1ULL)
 		binInsert(sorted, alone);
 	vec = sorted;
+}
+
+void	epicSortDeq(std::deque<unsigned> &deq)
+{
+	size_t	alone = -1ULL;
+
+	for (size_t i = 1; i < deq.size(); i += 2)
+	{
+		if (deq[i - 1] > deq[i])
+			std::swap(deq[i - 1], deq[i]);
+	}
+	if (deq.size() % 2)
+		alone = deq[deq.size() - 1];
+	deq = pairMergeSort(deq);
+
+	std::deque<unsigned>	sorted;
+	
+	for (size_t i = deq.size() - 1; i != 0; )
+	{
+		binInsert(sorted, deq[i--]);
+		sorted.push_front(deq[i]);
+		if (i)
+			--i;
+	}
+	if (alone != -1ULL)
+		binInsert(sorted, alone);
+	deq = sorted;
 }
 
 void	fillContainers(std::vector<unsigned> &vec, std::deque<unsigned> &deq, char *s)

@@ -6,7 +6,7 @@
 /*   By: glaguyon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 14:28:34 by glaguyon          #+#    #+#             */
-/*   Updated: 2025/01/28 20:42:21 by glaguyon         ###   ########.fr       */
+/*   Updated: 2025/01/28 20:57:22 by glaguyon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,16 +45,16 @@ int	main(int argc, char **argv)
 	clock_gettime(CLOCK_MONOTONIC_RAW, &startDeq);
 	epicSortDeq(deq);
 	clock_gettime(CLOCK_MONOTONIC_RAW, &endDeq);
-
+	
 	std::cout << "After:\t";
 	for (std::vector<unsigned>::iterator it = vec.begin(); it < vec.end(); ++it)
 		std::cout << *it << " ";
 	std::cout << "\n";
 
 	std::cout << "Time for " << vec.size() << " with vector: "
-		<< (endVec.tv_sec - startVec.tv_sec) * 1e9 + endVec.tv_nsec - startVec.tv_nsec
-		<< " ns\n";
+		<< (endVec.tv_sec - startVec.tv_sec) * 1e6
+		+ (endVec.tv_nsec - startVec.tv_nsec) / 1e3 << " us\n";
 	std::cout << "Time for " << deq.size() << " with deque: "
-		<< (endDeq.tv_sec - startDeq.tv_sec) * 1e9 + endDeq.tv_nsec - startDeq.tv_nsec
-		<< " ns\n";
+		<< (endDeq.tv_sec - startDeq.tv_sec) * 1e6
+		+ (endDeq.tv_nsec - startDeq.tv_nsec) / 1e3 << " us\n";
 }
