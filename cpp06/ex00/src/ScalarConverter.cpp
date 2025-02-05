@@ -6,7 +6,7 @@
 /*   By: glaguyon           <skibidi@ohio.sus>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 1833/02/30 06:67:85 by glaguyon          #+#    #+#             */
-/*   Updated: 2025/01/14 14:10:10 by glaguyon         ###   ########.fr       */
+/*   Updated: 2025/02/05 16:49:58 by glaguyon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,10 +108,9 @@ void	convertFromInt(const std::string &s)
 	
 	errno = 0;
 	l = std::strtol(s.c_str(), &end, 10);
-	if (errno == ERANGE)
-		return convertFromError(s);
-	if (std::numeric_limits<int>::min() + static_cast<int>(l) > 0
-		|| std::numeric_limits<int>::max() - static_cast<int>(l) < 0)
+	if (errno == ERANGE
+		|| l < static_cast<long>(std::numeric_limits<int>::min())
+		|| l > static_cast<long>(std::numeric_limits<int>::max()))
 		return convertFromError(s);
 	i = static_cast<int>(l);
 	if (i >= 32 && i <= 126)
@@ -136,17 +135,17 @@ void	convertFromFloat(const std::string &s)
 	f = static_cast<float>(d);
 	if (std::fabs(f) == std::numeric_limits<float>::infinity())
 		return convertFromError(s);
-	if (d >= 32. && d <= 126.)
+	if (f >= 32.f && f < 127.f)
 		std::cout << "char: '" << static_cast<char>(d) << "'\n";
 	else
 		std::cout << "char: non displayable\n";
-	if (std::numeric_limits<int>::min() + static_cast<int>(d) > 0
-		|| std::numeric_limits<int>::max() - static_cast<int>(d) < 0)
+	if (f < static_cast<float>(std::numeric_limits<int>::min())
+		|| f > static_cast<float>(std::numeric_limits<int>::max()))
 		std::cout << "int: impossible\n";
 	else
-		std::cout << "int: " << static_cast<int>(d) << "\n";
-	std::cout << "float: " << std::fixed << static_cast<float>(d) << "f\n"
-		<< "double: " << std::fixed << d << "\n";
+		std::cout << "int: " << static_cast<int>(f) << "\n";
+	std::cout << "float: " << std::fixed << f << "f\n"
+		<< "double: " << std::fixed << static_cast<double>(f) << "\n";
 }
 
 void	convertFromDouble(const std::string &s)
@@ -158,12 +157,12 @@ void	convertFromDouble(const std::string &s)
 	d = std::strtod(s.c_str(), &end);
 	if (errno == ERANGE)
 		return convertFromError(s);
-	if (d >= 32. && d <= 126.)
+	if (d >= 32. && d < 127.)
 		std::cout << "char: '" << static_cast<char>(d) << "'\n";
 	else
 		std::cout << "char: non displayable\n";
-	if (std::numeric_limits<int>::min() + static_cast<int>(d) > 0
-		|| std::numeric_limits<int>::max() - static_cast<int>(d) < 0)
+	if (d < static_cast<double>(std::numeric_limits<int>::min())
+		|| d > static_cast<double>(std::numeric_limits<int>::max()))
 		std::cout << "int: impossible\n";
 	else
 		std::cout << "int: " << static_cast<int>(d) << "\n";
