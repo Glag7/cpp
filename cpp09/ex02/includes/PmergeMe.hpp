@@ -28,7 +28,7 @@ void	epicSortDeq(std::deque<unsigned> &deq);
 template <typename Cont>
 Cont	pairMergeSort(Cont vec)
 {
-	if (vec.size() < 4)
+	if (vec.size() < 3)
 		return vec;
 	Cont	left = pairMergeSort(
 		Cont(vec.begin(), vec.begin() + vec.size() / 4 * 2));
